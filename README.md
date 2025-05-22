@@ -1,0 +1,1 @@
+This is a mashup of the Nokia Validated Design clab from [nokia/nokia-validated-designs](https://github.com/nokia/nokia-validated-designs), and the srl-telemetry lab from [srl-labs/srl-telemetry-lab/](https://github.com/srl-labs/srl-telemetry-lab/), it is currently a WIP go use the real labs.
