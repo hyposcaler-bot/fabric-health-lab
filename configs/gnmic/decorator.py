@@ -56,8 +56,8 @@ cutsheet = {
       'role':'leaf'
       },
       'leaf6:57400': {
-      'ethernet-1/1': {'remote_device': 'spine1', 'remote_interface': 'ethernet-1/6'},
-      'ethernet-1/2': {'remote_device': 'spine2', 'remote_interface': 'ethernet-1/6'},
+      'ethernet-1/1': {'remote_device': 'spine1', 'remote_interface': 'ethernet-1/6','remote_role':'spine'},
+      'ethernet-1/2': {'remote_device': 'spine2', 'remote_interface': 'ethernet-1/6','remote_role':'spine'},
       'ethernet-1/5': {'remote_device': 's6', 'remote_interface': 'eth2','remote_role':'server'},
       'ethernet-1/6': {'remote_device': 's9', 'remote_interface': 'eth1','remote_role':'server'},
       'role':'leaf'
