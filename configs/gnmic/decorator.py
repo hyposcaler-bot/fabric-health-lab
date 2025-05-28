@@ -82,9 +82,9 @@ cutsheet = {
 
 def apply(*events):
   for e in events:
-      if e.tags.get("source") and e.tags.get("interface_name"):
-            source = e.tags["source"]
-            interface_name = e.tags["interface_name"]
+      if e.tags.get('source') and e.tags.get('interface_name'):
+            source = e.tags['source']
+            interface_name = e.tags['interface_name']
             if source in cutsheet and interface_name in cutsheet[source]['interfaces']:
                   remote_interface = cutsheet[source]['interfaces'][interface_name]['remote_interface']
                   remote_device = cutsheet[source]['interfaces'][interface_name]['remote_device']
