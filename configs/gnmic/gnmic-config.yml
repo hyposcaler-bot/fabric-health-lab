@@ -81,7 +81,7 @@ outputs:
     type: prometheus
     listen: :9273
     event-processors:
-      - sample-starlark-processor
+      - simple-starlark-processor
       - trim-prefixes
       - rename-srl-interface
       - oper-state-to-int
@@ -109,6 +109,7 @@ processors:
             apply-on: "value"
             old: "down"
             new: "0"
+            
   rename-srl-interface:
     event-strings:
       tag-names:
@@ -120,7 +121,7 @@ processors:
             old: "ethernet-(\\d+)/(\\d+)"
             new: "e$1-$2"
 
-  sample-starlark-processor:
+  simple-starlark-processor:
     event-starlark:
       script: /decorator.py
       debug: false
