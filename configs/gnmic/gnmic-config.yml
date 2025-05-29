@@ -42,6 +42,7 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
     paths:
+      - /interface[name=ethernet-1/*]/admin-state
       - /interface[name=ethernet-1/*]/oper-state
       - /interface[name=ethernet-1/*]/statistics
       - /interface[name=ethernet-1/*]/traffic-rate
@@ -92,6 +93,7 @@ outputs:
       - trim-prefixes
       - rename-srl-interface
       - oper-state-to-int
+      - admin-state-to-int
 
 processors:
   trim-prefixes:
@@ -115,6 +117,20 @@ processors:
         - replace:
             apply-on: "value"
             old: "down"
+            new: "0"
+
+  admin-state-to-int:
+    event-strings:
+      value-names:
+        - ".*"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "enable"
+            new: "1"
+        - replace:
+            apply-on: "value"
+            old: "disable"
             new: "0"
             
   rename-srl-interface:
