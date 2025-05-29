@@ -11,6 +11,7 @@ common_srl_subscriptions: &common_srl_subs
   password: NokiaSrl1!
   subscriptions:
     - srl-if-stats
+    - srl-if-queue-stats
     - srl-bgp
     - srl-system-performance
     - srl-routes
@@ -44,6 +45,12 @@ subscriptions:
       - /interface[name=ethernet-1/*]/oper-state
       - /interface[name=ethernet-1/*]/statistics
       - /interface[name=ethernet-1/*]/traffic-rate
+  srl-if-queue-stats:
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+    paths:
+      - /qos/interfaces/interface[interface-id=*]/output/queues/queue[queue-name=*]/queue-statistics/aggregate-statistics
   srl-routes:
     mode: stream
     stream-mode: sample
