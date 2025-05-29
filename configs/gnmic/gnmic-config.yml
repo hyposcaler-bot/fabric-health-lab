@@ -51,7 +51,7 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
     paths:
-      - /qos/interfaces/interface[interface-id=ethernet1/*]/output/queues/queue[queue-name=*]/queue-statistics/aggregate-statistics
+      - /qos/interfaces/interface[interface-id=ethernet1/*]/output/queues/queue[queue-name=unicast*]/queue-statistics/aggregate-statistics
   srl-routes:
     mode: stream
     stream-mode: sample
