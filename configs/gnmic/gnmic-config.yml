@@ -51,7 +51,7 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
     paths:
-      - /qos/interfaces/interface[interface-id=*]/output/queues/queue[queue-name=*]/queue-statistics/aggregate-statistics
+      - /qos/interfaces/interface[interface-id=ethernet1/*]/output/queues/queue[queue-name=*]/queue-statistics/aggregate-statistics
   srl-routes:
     mode: stream
     stream-mode: sample
@@ -89,6 +89,7 @@ outputs:
     type: prometheus
     listen: :9273
     event-processors:
+      - rename-srl-interface-id
       - simple-starlark-processor
       - trim-prefixes
       - rename-srl-interface
@@ -143,6 +144,22 @@ processors:
             apply-on: "value"
             old: "ethernet-(\\d+)/(\\d+)"
             new: "e$1-$2"
+
+  rename-srl-interface-id:
+    event-strings:
+      tag-names:
+        - "^interface_interface-id"
+        - "^queue_queue-name"
+      transforms:
+        - replace:
+            apply-on: "name"
+            old: "^interface_interface-id"
+            new: "interface_name"
+        - replace:
+            apply-on: "name"
+            old: "^queue_queue-name"
+            new: "queue_name"
+
 
   simple-starlark-processor:
     event-starlark:
