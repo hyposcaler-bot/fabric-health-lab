@@ -1,3 +1,4 @@
 *.clab.yml.bak
 .DS_Store
 clab-fabric-health-lab/
+.gnmic.yml
